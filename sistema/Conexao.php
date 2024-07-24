@@ -18,7 +18,7 @@
         {
             return $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
         }
-        public function nameBanco()
+        public function __toString()
         {
             return $this->dbname;
         }
