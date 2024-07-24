@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+    <head>
+    <?php include "./banco.php"?>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gafanhotos</title>
+    <title><?php echo ($conexao)->nameBanco();?></title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
-    <?php include "./banco.php"?>    
+      <?php exibiDados($conexao->conectar())?>
     </div>
 </body>
 </html>
