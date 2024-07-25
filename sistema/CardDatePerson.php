@@ -27,7 +27,7 @@
                     echo "<div class='gafanhoto'>
                     <p>{$row["id"]}</p>
                     <h2>{$row["nome"]}</h2> 
-                    <p> ola meu nome e {$row["nome"]} e trabalho com {$row["profissao"]}, tenho 'nascimento' sou do genero ".$row["sexo"].", peso {$row["peso"]}kg e tenho  {$row["altura"]}cm de altura ,e sou de {$row["nacionalidade"]}</p>
+                    <p> ola meu nome e {$row["nome"]} e trabalho com {$row["profissao"]}, tenho {$this->calculaIdadePerson($row["nascimento"])} anos de idade, sou do genero ".$row["sexo"].", peso {$row["peso"]}kg e tenho  {$row["altura"]}cm de altura ,e sou de {$row["nacionalidade"]}</p>
                     </div>";
                 }
             } else {
@@ -36,5 +36,14 @@
 
             // Fecha a conexão
             $this->conexão->close();
+        }
+
+        private function calculaIdadePerson($dataDeNascimento)
+        {
+            $dataAtual = new DateTime();
+            $diaDoNascimento = new DateTime($dataDeNascimento);
+
+            $idade = $dataAtual->diff($diaDoNascimento) ;
+            return $idade->y;
         }
     }
